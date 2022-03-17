@@ -21,10 +21,10 @@ const  Startserver=async(key)=>{
     app.listen(port,()=>{
         console.log(`app is running on port ${port}`)
     });
-    console.log("loaded")
+    console.log("database connnected")
     })
     .catch((err)=>{
-        console.log("failed")
+        console.log("fail to connect to database")
     })
 }
 Startserver(process.env.DBKEY) 

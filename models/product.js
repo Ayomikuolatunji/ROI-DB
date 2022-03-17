@@ -1,10 +1,28 @@
 const {Schema,model}= require('mongoose');
 
 const ProductSchema = new Schema({
-    product_name: String,
-    product_type:String,
-    desc:String,
-    imgUrl:String,
+    product_name: {
+     type:String,
+     required:[true, "please provide product name"],
+     trim:true,
+     maxlength:[20, "name cant be longer than 20"]
+    },
+    product_type: {
+        type:String,
+        required:[true, "please provide product type"],
+        trim:true,
+        maxlength:[10, "name cant be longer than 20"]
+       },
+    desc: {
+        type:String,
+        trim:true,
+        maxlength:[400, "product description cant be longer than 20"]
+       },
+    imgUrl: {
+        type:String,
+        required:[true, "please provide product image"],
+        trim:true,
+       },
 
   });
 
