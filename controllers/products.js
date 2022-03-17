@@ -9,11 +9,16 @@ const getProducts=async(req,res,next)=>{
     }
 }
 
-const getSingleProduct=(req,res,next)=>{
+const getSingleProduct=async(req,res,next)=>{
     try {
-        
+        const {id:prodId}=req.params;
+        const singleProd=await ProductSchema.findOne({_id:prodId});
+        if(!singleProd){
+            return res.status(404).json({errMsg:`No item found with the ${prodId}`})
+        }
+        res.status(200).json(singleProd)
     } catch (error) {
-        
+        res.status(500).json({errMsg:error})
     }
 }
 
@@ -26,11 +31,11 @@ const createProduct=async(req,res,next)=>{
     }
 }
 
-const updateProducts=(req,res,next)=>{
+const updateProducts=async(req,res,next)=>{
      res.status(200).send("update a product")
 }
 
-const deleteProduct=()=>{
+const deleteProduct=async(req,res,next)=>{
     res.status(200).send("delete a product")
 }
 module.exports={getProducts,getSingleProduct,createProduct,updateProducts,deleteProduct}
