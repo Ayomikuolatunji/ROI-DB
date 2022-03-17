@@ -1,1 +1,11 @@
-const id="mongodb+srv://ROI-USER:<password>@cluster0.xcjno.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+const {connect}= require('mongoose');
+
+
+const connectFunc=(KEY)=>{
+    return connect(KEY,{
+        useNewUrlParser:true
+    })
+}
+
+module.exports={connectFunc}
