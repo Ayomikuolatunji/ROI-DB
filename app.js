@@ -1,12 +1,10 @@
-
 const express=require("express");
 const app=express()
 const port=5000;
 const {router}=require("./routes/products");
-const {connectFunc}=require("./db/connect")
+const {connectFunc}=require("./db/connect");
 
 require('dotenv').config()
-
 
 app.use(express.json())
 app.use("/api/v2/products",router)
