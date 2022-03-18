@@ -51,7 +51,10 @@ const deleteProduct=async(req,res,next)=>{
 const updateProducts=async(req,res,next)=>{
     try {
         const {id:prodId}=req.params;
-        const newProd=await ProductSchema.findOneAndUpdate({_id:prodId},req.body)
+        const newProd=await ProductSchema.findOneAndUpdate({_id:prodId},req.body,{
+            new:true,
+            runValidators:true
+        })
         if(!newProd){
             return res.status(404).json({errMsg:`No item found with the ${prodId}`})
         }
