@@ -3,7 +3,7 @@ const ProductSchema=require("../models/product")
 const getProducts=async(req,res,next)=>{
     try {
         const products=await ProductSchema.find({});
-        res.status(200).json(products)
+        res.status(200).json({status:"success", data:{products, nbHits:products.length}})
     } catch (error) {
         throw new Error("no products found")
     }

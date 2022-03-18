@@ -1,18 +1,21 @@
 const express=require("express");
 const app=express()
-const port=5000;
 const {router}=require("./routes/products");
 const {connectFunc}=require("./db/connect");
+require('dotenv').config();
+const {notFound}=require("./middleware/404")
 
-require('dotenv').config()
 
+
+// middleware functions
 app.use(express.json())
 app.use("/api/v2/products",router)
+app.use(notFound)
 
 
 
 
-
+const port=process.env.PORT || 5000;
 
 const  Startserver=async(key)=>{
    await connectFunc(key).then(()=>{
