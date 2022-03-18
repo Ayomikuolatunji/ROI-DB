@@ -31,14 +31,7 @@ const createProduct=async(req,res,next)=>{
     }
 }
 
-const updateProducts=async(req,res,next)=>{
-    try {
-        
-    } catch (error) {
-        res.status(500).json({errMsg:error})
-    }
-     res.status(200).send("update a product")
-}
+
 
 const deleteProduct=async(req,res,next)=>{
     try {
@@ -53,4 +46,21 @@ const deleteProduct=async(req,res,next)=>{
     }
     res.status(200).send("delete a product")
 }
+
+
+const updateProducts=async(req,res,next)=>{
+    try {
+        const {id:prodId}=req.params;
+        const newProd=await ProductSchema.findOneAndUpdate({_id:prodId},req.body)
+        if(!newProd){
+            return res.status(404).json({errMsg:`No item found with the ${prodId}`})
+        }
+        res.status(200).json(newProd)
+    } catch (error) {
+        res.status(500).json({errMsg:error})
+    }
+     res.status(200).send("update a product")
+}
+
+
 module.exports={getProducts,getSingleProduct,createProduct,updateProducts,deleteProduct}
