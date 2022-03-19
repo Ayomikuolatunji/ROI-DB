@@ -3,9 +3,12 @@ const app=express()
 const {router}=require("./routes/products");
 const {connectFunc}=require("./db/connect");
 require('dotenv').config();
-const {notFound}=require("./middleware/404")
+const {notFound}=require("./middleware/404");
+var cors = require('cors')
 
 
+// cors
+app.use(cors())
 
 // middleware functions
 app.use(express.json())
