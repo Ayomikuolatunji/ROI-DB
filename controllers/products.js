@@ -2,15 +2,14 @@ const ProductSchema=require("../models/product")
 const asyncWrapper=require("../util/asyncWrapper")
 
 
-const getProducts=asyncWrapper(async(req,res,next)=>{
+const getProducts=async(req,res,next)=>{
     try {
         const products=await ProductSchema.find({});
         res.status(200).json({status:"success", data:{products, nbHits:products.length}})
     } catch (error) {
         throw new Error("no products found")
     }
-})
-
+}
 const getSingleProduct=async(req,res,next)=>{
     try {
         const {id:prodId}=req.params;
