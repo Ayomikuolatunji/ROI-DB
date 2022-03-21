@@ -45,7 +45,6 @@ const deleteProduct=async(req,res,next)=>{
     } catch (error) {
         res.status(500).json({errMsg:error})
     }
-    res.status(200).send("delete a product")
 }
 
 
