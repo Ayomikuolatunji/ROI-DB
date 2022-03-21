@@ -7,7 +7,7 @@ const getProducts=async(req,res,next)=>{
         const products=await ProductSchema.find({});
         res.status(200).json({status:"success", data:{products, nbHits:products.length}})
     } catch (error) {
-        throw new Error("no products found")
+        res.status(500).json({errMsg:error})
     }
 }
 const getSingleProduct=async(req,res,next)=>{
@@ -63,7 +63,7 @@ const updateProducts=async(req,res,next)=>{
     } catch (error) {
         res.status(500).json({errMsg:error})
     }
-     res.status(200).send("update a product")
+    
 }
 
 
