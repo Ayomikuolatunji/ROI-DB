@@ -23,6 +23,11 @@ const ProductSchema = new Schema({
         required:[true, "please provide product image"],
         trim:true,
        },
+    loaction:{
+        type:String,
+        trim:true,
+        maxlength:[400, "location description should not be more than 100 characters"]
+    }
 
   });
 
