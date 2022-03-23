@@ -28,7 +28,7 @@ const  Startserver=async(key)=>{
     console.log("database connnected")
     })
     .catch((err)=>{
-        console.log("fail to connect to database")
+        console.log("fail to connect to database",err)
     })
 }
 Startserver(process.env.DBKEY) 
